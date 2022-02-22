@@ -17,13 +17,15 @@ spring:
       # ssl:
       #   trust-store: classpath:/vault.jks
       #   trust-store-password: changeit
-      generic:
+      # it's written in https://cloud.spring.io/spring-cloud-vault/multi/multi_vault.config.backends.html,
+      # 'generic' is KV v1, and 'kv' is KV v2, but genric does work. 'kv' can be used for v1 and v2.
+      # generic:
+      #   enabled: true
+      #   application-name: fakebank
+      kv:
         enabled: true
-        application-name: vault_test_cloud_app
-      #      kv:
-      #        enabled: false
-      #        backend: kv
-      #        application-name: fakebank
+        backend: test2
+        default-context: test22
       database:
         enabled: true
         role: vaultrole

@@ -1,11 +1,14 @@
 package com.example.vaultcloudtest;
 
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.example.vaultcloudtest.domain.TestKv;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.vault.core.VaultTemplate;
 
 @Component
 public class VaultService {
@@ -13,9 +16,22 @@ public class VaultService {
     @Autowired
     TestKvRepository    testKvRepository;
 
+    @Autowired
+    VaultTemplate   vaultTemplate;
+
     // test KV version 1
     public String   testKv1(String str) {
-        return  "TBD";
+        Map<String, String> in = new HashMap<String, String>();
+        in.put("testKey", str);
+
+        vaultTemplate.write("test1/test11", in);
+
+        String  result = (String)vaultTemplate.read("test1/test11", HashMap.class).getData().get("testKey");
+        System.out.println(result);
+
+        // vaultTemplate.delete("secret/myapp");
+
+        return  result;
     }
 
     // test KV version 2 - put/get
