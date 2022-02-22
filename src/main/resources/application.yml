@@ -1,8 +1,8 @@
 spring:
   application:
-    name: fakebank
+    name: vault_test_cloud_app
   datasource:
-    url: jdbc:mysql://192.168.0.115:13306/fakebank?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://192.168.0.115:13306/testdb?serverTimezone=Asia/Seoul
     hikari:
       connection-test-query: select 1
       idle-timeout: 5000
@@ -19,14 +19,14 @@ spring:
       #   trust-store-password: changeit
       generic:
         enabled: true
-        application-name: fakebank
+        application-name: vault_test_cloud_app
       #      kv:
       #        enabled: false
       #        backend: kv
       #        application-name: fakebank
       database:
         enabled: true
-        role: fakebank-accounts-ro
+        role: vaultrole
         backend: database
         username-property: spring.datasource.username
         password-property: spring.datasource.password

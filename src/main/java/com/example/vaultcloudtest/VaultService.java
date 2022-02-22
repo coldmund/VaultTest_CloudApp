@@ -1,5 +1,9 @@
 package com.example.vaultcloudtest;
 
+import java.util.Base64;
+
+import com.example.vaultcloudtest.domain.TestKv;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,6 +37,8 @@ public class VaultService {
     }
 
     public String   testDb(String str) {
-        return  "TBD";
+        TestKv  testKv = new TestKv(str, Base64.getEncoder().encodeToString(str.getBytes()));
+        testKvRepository.save(testKv);
+        return  testKvRepository.findByCle(str).getPrix();
     }
 }
