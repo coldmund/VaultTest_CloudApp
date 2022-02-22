@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.vaultcloudtest;
+package com.example.vaultcloudtest.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

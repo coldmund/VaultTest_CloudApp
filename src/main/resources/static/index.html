@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vault Test</title>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script>
+        var makeString = function() {
+            let str = '';
+            for(let i=0 ; i<10 ; ++i) {
+                str += String.fromCharCode(Math.floor(Math.random()*26)+97);
+            }
+            return  str;
+        }
+
+        var testkv1 = function() {
+            console.log('testkv1');
+            let str = makeString();
+            $.ajax({
+                url: 'api/testkv1',
+                data: 'str=' + str,
+                beforeSend: function(data) {
+                    $('#input1').text(str);
+                },
+                success: function(data) {
+                    $('#output1').text(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus);
+                }
+            });
+        }
+        var testkv2 = function() {
+            console.log('testkv2');
+            let str = makeString();
+            $.ajax({
+                url: 'api/testkv2',
+                data: 'str=' + str,
+                beforeSend: function(data) {
+                    $('#input2').text(str);
+                },
+                success: function(data) {
+                    $('#output2').text(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus);
+                }
+            });
+        }
+        var testkv3 = function() {
+            console.log('testkv3');
+            let str = makeString();
+            $.ajax({
+                url: 'api/testkv3',
+                data: 'str=' + str,
+                beforeSend: function(data) {
+                    $('#input3').text(str);
+                },
+                success: function(data) {
+                    $('#output3').text(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus);
+                }
+            });
+        }
+        var testEnc = function() {
+            console.log('testEnc');
+            let str = makeString();
+            $.ajax({
+                url: 'api/testEnc',
+                data: 'str=' + str,
+                beforeSend: function(data) {
+                    $('#org').text(str);
+                },
+                success: function(data) {
+                    $('#enc').text(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus);
+                }
+            });
+        }
+        var testDec = function() {
+            console.log('testDec: ' + $('#enc').text());
+            $.ajax({
+                url: 'api/testDec',
+                data: 'str=' + encodeURIComponent($('#enc').text()),
+                success: function(data) {
+                    $('#dec').text(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus);
+                }
+            });
+        }
+        var testDb = function() {
+            console.log('testDb');
+            let str = makeString();
+            $.ajax({
+                url: 'api/testDb',
+                data: 'str=' + str,
+                beforeSend: function(data) {
+                    $('#input4').text(str);
+                },
+                success: function(data) {
+                    $('#output4').text(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus);
+                }
+            });
+        }
+   </script>
+</head>
+
+<body>
+    <h1>Vault Test</h1>
+
+    <h2>KV1 write/read</h2>
+    <input type='button' value='test' onclick='testkv1()'><br>
+    input1: <span id='input1'></span><br>
+    output1: <span id='output1'></span><br>
+
+    <h2>KV2 put/get</h2>
+    <input type='button' value='test' onclick='testkv2()'><br>
+    input2: <span id='input2'></span><br>
+    output2: <span id='output2'></span><br>
+
+    <h2>KV2 patch/get</h2>
+    <input type='button' value='test' onclick='testkv3()'><br>
+    input3: <span id='input3'></span><br>
+    output3: <span id='output3'></span><br>
+
+    <h2>Encryption/Decryption</h2>
+    <input type='button' value='encrypt' onclick='testEnc()'><input type='button' value='decrypt' onclick='testDec()'><br>
+    org: <span id='org'></span><br>
+    enc: <span id='enc'></span><br>
+    dec: <span id='dec'></span><br>
+
+    <h2>DB credential</h2>
+    <input type='button' value='test' onclick='testDb()'><br>
+    input: <span id='input4'></span><br>
+    output: <span id='output4'></span><br>
+</body>
+</html>
