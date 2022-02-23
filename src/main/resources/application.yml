@@ -18,7 +18,7 @@ spring:
       #   trust-store: classpath:/vault.jks
       #   trust-store-password: changeit
       # it's written in https://cloud.spring.io/spring-cloud-vault/multi/multi_vault.config.backends.html,
-      # 'generic' is KV v1, and 'kv' is KV v2, but genric does work. 'kv' can be used for v1 and v2.
+      # 'generic' is for KV v1, and 'kv' is for KV v2, but 'genric' does not work. 'kv' can be used for v1 and v2.
       # generic:
       #   enabled: true
       #   application-name: fakebank
