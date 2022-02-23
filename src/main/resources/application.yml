@@ -26,13 +26,13 @@ spring:
         enabled: true
         backend: test2
         default-context: test22
-      database:
-        enabled: true
-        role: vaultrole
-        backend: database
-        username-property: spring.datasource.username
-        password-property: spring.datasource.password
-      token: s.5yWHkcZ1LOAAGQQkYuC3LmQR
+      databases:
+        - enabled: true
+          role: vaultrole
+          backend: database
+          username-property: spring.datasource.username
+          password-property: spring.datasource.password
+      token: s.qnUWa9meIay29NKtwxdL8nUe
   config:
     import: vault://
 logging:
