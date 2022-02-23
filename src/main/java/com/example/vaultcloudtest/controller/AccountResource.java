@@ -1,7 +1,7 @@
 package com.example.vaultcloudtest.controller;
 
-import com.example.vaultcloudtest.AccountRepo;
-import com.example.vaultcloudtest.domain.Account;
+import com.example.vaultcloudtest.db.org.Account;
+import com.example.vaultcloudtest.db.org.AccountRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

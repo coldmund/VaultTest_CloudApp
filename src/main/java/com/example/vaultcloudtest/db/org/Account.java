@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.vaultcloudtest.domain;
+package com.example.vaultcloudtest.db.org;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

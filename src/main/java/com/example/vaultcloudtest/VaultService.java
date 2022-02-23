@@ -4,7 +4,8 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.vaultcloudtest.domain.TestKv;
+import com.example.vaultcloudtest.db.test1.TestKv;
+import com.example.vaultcloudtest.db.test1.TestKvRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
