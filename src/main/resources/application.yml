@@ -2,16 +2,20 @@ spring:
   application:
     name: vault_test_cloud_app
   datasource:
-    url: jdbc:mysql://192.168.0.115:13306/testdb?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://newmint.lge.com:13306/testdb?serverTimezone=Asia/Seoul
+    # driverClassName: org.mariadb.jdbc.Driver
     hikari:
-      connection-test-query: select 1
-      idle-timeout: 5000
-      max-lifetime: 120000
-      maximum-pool-size: 5
-      minimum-idle: 5
+      minimumIdle: 2
+      maximumPoolSize: 10
+      idleTimeout: 30000
+      poolName: VaultTestCP
+      maxLifetime: 200000
+      connectionTimeout: 30000
+      jdbc-url: jdbc:mysql://newmint.lge.com:13306/testdb?serverTimezone=Asia/Seoul
+      # connection-test-query: select 1
   cloud:
     vault:
-      uri: http://192.168.0.115:8200
+      uri: http://newmint.lge.com:8300
       connection-timeout: 5000
       read-timeout: 15000
       # ssl:
@@ -32,7 +36,7 @@ spring:
           backend: database
           username-property: spring.datasource.username
           password-property: spring.datasource.password
-      token: s.qnUWa9meIay29NKtwxdL8nUe
+      token: hvs.33J5k3nKubVgX8wCelADyKJX
   config:
     import: vault://
 logging:
